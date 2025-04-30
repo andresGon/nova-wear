@@ -1,0 +1,24 @@
+<header class="app-header">
+  <div class="logo-container">
+    <!-- Placeholder for Logo -->
+    <a routerLink="/home">
+      <img src="assets/logo-placeholder.png" alt="Nova Wear Logo" height="40">
+      <!-- Replace with your actual logo later -->
+    </a>
+  </div>
+
+  <nav class="category-nav">
+    <div *ngIf="isLoading">Loading categories...</div>
+    <div *ngIf="error" style="color: red;">{{ error }}</div>
+    <ul *ngIf="!isLoading && !error">
+      <!-- Link to all products -->
+      <li><a routerLink="/products">All Products</a></li>
+      <!-- Links for each category -->
+      <li *ngFor="let category of categories">
+        <!-- You might want to create routes like /category/:name later -->
+        <!-- For now, just display them or link back to the main products page -->
+        <a [routerLink]="['/products']" [queryParams]="{ category: category }">{{ category | titlecase }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
