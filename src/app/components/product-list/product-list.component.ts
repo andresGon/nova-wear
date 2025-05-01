@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs'; // Import Observable and of
   standalone: true,
   imports: [CommonModule],
   templateUrl: './product-list.component.html',
-  // styleUrl: './product-list.component.scss' // Use styleUrl if you have an SCSS file
+  styleUrl: './product-list.component.scss' // Use styleUrl if you have an SCSS file
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
