@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component'; // Import HomeComponent
-import { ProductListComponent } from './components/product-list/product-list.component'; // Import ProductListComponent
+import { ProductListComponent } from './components/product-list/product-list.component';
 
-// Define the application routes here
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
+    // Route for displaying all products
     { path: 'products', component: ProductListComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
-    // Add a wildcard route for 404 if needed later
-    // { path: '**', component: PageNotFoundComponent }, // You would need to create this component
+    // Route for displaying products by category
+    { path: 'category/:categoryName', component: ProductListComponent },
+    // Default redirect remains pointing to all products
+    { path: '', redirectTo: '/products', pathMatch: 'full' },
+    // Optional: Add a wildcard route for 404 later
+    // { path: '**', component: PageNotFoundComponent },
 ];

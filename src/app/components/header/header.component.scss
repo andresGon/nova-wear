@@ -1,5 +1,21 @@
 .app{
     &-header{
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        width: 100%;
+    }
+}
+.category-nav{
+    margin: 0;;
+    ul{
+        display: flex;
+        list-style: none;
+        padding: 0;
+        gap: 10px;
+        a{
+            text-decoration: none;
+        }
     }
 }

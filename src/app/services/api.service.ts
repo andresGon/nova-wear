@@ -15,13 +15,13 @@ export class ApiService {
     return this.http.get<Product[]>(`${this.apiUrl}/products`);
   }
 
-  // Add this method to get categories
   getCategories(): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/products/categories`);
   }
 
-  // You can add more methods here later for other endpoints:
-  // getProductById(id: number): Observable<Product> { ... }
-  // createProduct(product: Product): Observable<Product> { ... }
-  // etc.
+  // Add this method to get products by category
+  getProductsByCategory(category: string): Observable<Product[]> {
+    // Ensure the category name is properly encoded for the URL
+    return this.http.get<Product[]>(`${this.apiUrl}/products/category/${encodeURIComponent(category)}`);
+  }
 }
