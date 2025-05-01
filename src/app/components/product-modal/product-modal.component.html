@@ -1,0 +1,22 @@
+<!-- Modal Overlay -->
+<div class="modal-overlay" (click)="onClose()">
+  <!-- Modal Content -->
+  <div class="modal-content" (click)="stopPropagation($event)">
+    <button class="close-button" (click)="onClose()">&times;</button>
+
+    <div *ngIf="product">
+      <h2>{{ product.title }}</h2>
+      <img [src]="product.image" [alt]="product.title" class="modal-image">
+      <p><strong>Category:</strong> {{ product.category | titlecase }}</p>
+      <p><strong>Price:</strong> {{ product.price | currency }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <div *ngIf="product.rating">
+        <p><strong>Rating:</strong> {{ product.rating.rate }}/5 ({{ product.rating.count }} reviews)</p>
+      </div>
+    </div>
+
+    <div *ngIf="!product">
+      <p>Loading product details...</p>
+    </div>
+  </div>
+</div>

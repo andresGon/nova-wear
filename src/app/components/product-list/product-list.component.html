@@ -1,3 +1,5 @@
+<h2>{{ currentCategory ? (currentCategory | titlecase) : 'All Products' }}</h2>
+
 <div *ngIf="isLoading">
   <p>Loading products...</p>
 </div>
@@ -6,18 +8,24 @@
   <p>{{ error }}</p>
 </div>
 
-<!-- Make sure this *ngIf checks !isLoading and !error -->
 <div *ngIf="!isLoading && !error && products.length > 0" class="product-grid">
-   <!-- Check if products array actually has items -->
-  <div *ngFor="let product of products" class="product-card">
+  <!-- Add (click) event to the product card div -->
+  <div *ngFor="let product of products" class="product-card" (click)="openProductModal(product)">
     <img [src]="product.image" [alt]="product.title" width="100">
     <h3>{{ product.title }}</h3>
     <p>{{ product.price | currency }}</p>
   </div>
 </div>
 
-<!-- Add a message if products array is empty after loading -->
 <div *ngIf="!isLoading && !error && products.length === 0">
-  <p>No products found.</p>
+  <p>No products found{{ currentCategory ? ' in this category' : '' }}.</p>
 </div>
+
+<!-- Add the modal component -->
+<app-product-modal
+  *ngIf="isModalVisible"
+  [product]="selectedProduct"
+  (closeModal)="closeProductModal()">
+</app-product-modal>
+
 
