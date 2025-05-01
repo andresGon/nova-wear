@@ -1,4 +1,4 @@
-<h2>{{ currentCategory ? (currentCategory | titlecase) : 'All Products' }}</h2>
+<h2>{{ currentCategory ? (currentCategory | titlecase) : 'All' }}</h2>
 
 <div *ngIf="isLoading">
   <p>Loading products...</p>
@@ -9,9 +9,11 @@
 </div>
 
 <div *ngIf="!isLoading && !error && products.length > 0" class="product-grid">
-  <!-- Add (click) event to the product card div -->
   <div *ngFor="let product of products" class="product-card" (click)="openProductModal(product)">
-    <img [src]="product.image" [alt]="product.title" width="100">
+    <!-- Add the image container div -->
+    <div class="image-container">
+      <img [src]="product.image" [alt]="product.title">
+    </div>
     <h3>{{ product.title }}</h3>
     <p>{{ product.price | currency }}</p>
   </div>
@@ -21,7 +23,7 @@
   <p>No products found{{ currentCategory ? ' in this category' : '' }}.</p>
 </div>
 
-<!-- Add the modal component -->
+<!-- the modal component -->
 <app-product-modal
   *ngIf="isModalVisible"
   [product]="selectedProduct"

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Import CommonModule for *ngFor
-import { RouterLink } from '@angular/router'; // Import RouterLink for navigation
-import { ApiService } from '../../services/api.service'; // Import ApiService
+import { CommonModule } from '@angular/common';
+// Import RouterLink and RouterLinkActive
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink], // Add CommonModule and RouterLink
+  // Add RouterLinkActive to the imports array
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  // Change styleUrls to styleUrl and point to the .scss file
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   isLoading: boolean = true;
   error: string | null = null;
 
-  constructor(private apiService: ApiService) {} // Inject ApiService
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.fetchCategories();

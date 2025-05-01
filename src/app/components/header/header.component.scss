@@ -1,22 +1,42 @@
-.app{
-    &-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        width: 100%;
-    }
+/* Import Roboto font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  background-color: #fff; // Optional: Add a background
 }
-.category-nav{
-    margin: 0;;
-    ul{
-        display: flex;
-        list-style: none;
-        padding: 0;
-        gap: 10px;
-        a{
-            text-decoration: none;
-            font-weight: 500; // Use the medium weight for nav links
-        }
-    }
+
+.logo-container img {
+  display: block;
+  height: 40px; // Ensure height is consistent
+}
+
+.category-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px; // Increase gap slightly
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500; // Use the medium weight for nav links
+  padding: 8px 0; // Add some padding for better click area and visual separation
+  border-bottom: 2px solid transparent; // Prepare for active state border
+  transition: color 0.2s ease, border-bottom-color 0.2s ease; // Smooth transition
+
+  &:hover {
+    color: #007bff; // Hover color
+  }
+
+  // Style for the active link
+  &.active-category {
+    color: #0056b3; // Darker color for active state
+    border-bottom-color: #0056b3; // Add an underline effect
+  }
 }
