@@ -1,10 +1,11 @@
 <h2>{{ currentCategory ? (currentCategory | titlecase) : 'All' }}</h2>
 
-<div *ngIf="isLoading">
+<div *ngIf="isLoading" class="loading-wrap">
   <p>Loading products...</p>
+  <div class="spinner"></div>
 </div>
 
-<div *ngIf="error" style="color: red;">
+<div *ngIf="error" style="color: red;" class="error-message">
   <p>{{ error }}</p>
 </div>
 

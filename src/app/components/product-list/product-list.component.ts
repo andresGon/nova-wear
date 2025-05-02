@@ -54,7 +54,7 @@ export class ProductListComponent implements OnInit {
       error: (err) => {
         console.error('API Error - Error fetching products:', err);
         // Provide more specific error if possible
-        this.error = `Failed to load products${this.currentCategory ? ' for category ' + this.currentCategory : ''}. Please check console.`;
+        this.error = `Failed to load products${this.currentCategory ? ' for category ' + this.currentCategory : ''}. Please reload.`;
         this.isLoading = false;
         this.products = []; // Clear products on error
       }

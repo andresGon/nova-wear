@@ -9,7 +9,6 @@ https://fakestoreapi.com/
 
 se listan todos los productos de la api publica, se visualizan en cards individuales, al hacer click en la card se abre un modal con mas detalles del producto.
 se puede filtrar los productos por categoria desde el componente header.
----
 
 ## 📄 Tecnologías utilizadas
 

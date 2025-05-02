@@ -9,10 +9,9 @@
   justify-content: center;
   align-items: center;
   z-index: 1000; // Ensure it's on top
-  animation-name: fadeIn;
+  animation-name: fadeInUp;
   animation-duration: .3s;
-  animation-fill-mode: both;
-  
+  animation-fill-mode: both; 
 }
 
 @keyframes fadeIn {
@@ -24,6 +23,37 @@
     opacity: 1;
   }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  // Ensure animation duration is set if not inherited
+  // animation-duration: .3s; // Already set in fadeInUp, but good to be explicit if needed
+}
+.fadeOutDown {
+  animation-name: fadeOutDown;
+  animation-duration: .3s; // Ensure this matches setTimeout in TS
+  animation-fill-mode: both; // Keep final state
+}
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); // Start from current position
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0); // Move down slightly during fade out (adjust as needed)
+  }
+}
+
 
 .modal-content {
   background-color: #fff;

@@ -27,3 +27,41 @@ a {
 .main-container {
   margin: 0 auto;
 }
+
+/* spinner styles*/
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 6px solid;
+  border-color: #dbdcef;
+  border-right-color: #474bff;
+  animation: spinner-d3wgkg 1s infinite linear;
+}
+
+@keyframes spinner-d3wgkg {
+  to {
+     transform: rotate(1turn);
+  }
+}
+/* styles loading*/
+.loading-wrap{
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.loading-wrap__categories{
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  .spinner {
+    width: 10px;
+    height: 10px;
+  }
+}
+/* error */
+.error-message{
+  text-align: center;
+}
