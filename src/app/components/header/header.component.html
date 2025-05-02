@@ -1,29 +1,37 @@
 <header class="app-header">
   <div class="logo-container">
-    <!-- Placeholder for Logo -->
-    <a routerLink="/products"> 
+    <a routerLink="/products" (click)="closeMobileMenu()">
       <img src="assets/images/nova-wear.png" alt="Nova Wear" height="40">
     </a>
   </div>
 
-  <nav class="category-nav">
+  <!-- Hamburger Menu Button (Visible on Mobile) -->
+  <button class="menu-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+    ☰ <!-- Or use an SVG icon -->
+  </button>
+
+  <!-- Navigation Container (Adapts for Mobile) -->
+  <nav class="category-nav" [class.mobile-menu-open]="isMobileMenuOpen">
+    <!-- Optional: Overlay for when mobile menu is open
+    <div class="menu-overlay" (click)="closeMobileMenu()"></div> -->
+
+    <!-- Category List (Styled differently on mobile) -->
     <div *ngIf="isLoading">Loading categories...</div>
     <div *ngIf="error" style="color: red;">{{ error }}</div>
     <ul *ngIf="!isLoading && !error">
-      <!-- Add routerLinkActive and options for exact match on 'All' -->
       <li>
         <a
           routerLink="/products"
           routerLinkActive="active-category"
           [routerLinkActiveOptions]="{ exact: true }"
-          >All</a
-        >
+          (click)="closeMobileMenu()"
+                     >All</a>
       </li>
-      <!-- Add routerLinkActive for category links -->
       <li *ngFor="let category of categories">
         <a
           [routerLink]="['/category', category]"
           routerLinkActive="active-category"
+          (click)="closeMobileMenu()" 
           >{{ category | titlecase }}</a
         >
       </li>

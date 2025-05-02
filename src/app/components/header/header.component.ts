@@ -14,19 +14,19 @@ export class HeaderComponent implements OnInit {
   categories: string[] = [];
   isLoading: boolean = true;
   error: string | null = null;
-
-  // Property to track if the header should be fixed
   isHeaderFixed = false;
 
-  // Bind the 'fixed-header' class based on the isHeaderFixed property
+  // Add property for mobile menu state
+  isMobileMenuOpen = false;
+
   @HostBinding('class.fixed-header') get fixed() {
     return this.isHeaderFixed;
   }
 
   constructor(
     private apiService: ApiService,
-    @Inject(DOCUMENT) private document: Document, // Inject DOCUMENT
-    private el: ElementRef // Inject ElementRef
+    @Inject(DOCUMENT) private document: Document,
+    private el: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -67,6 +67,21 @@ export class HeaderComponent implements OnInit {
       this.document.body.style.paddingTop = `${headerHeight}px`;
     } else {
       this.document.body.style.paddingTop = '0';
+    }
+  }
+
+  // Method to toggle the mobile menu
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    // Optional: Prevent body scroll when menu is open
+    this.document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : '';
+  }
+
+  // Method to close the mobile menu (e.g., when a link is clicked)
+  closeMobileMenu(): void {
+    if (this.isMobileMenuOpen) {
+      this.isMobileMenuOpen = false;
+      this.document.body.style.overflow = ''; // Restore body scroll
     }
   }
 }

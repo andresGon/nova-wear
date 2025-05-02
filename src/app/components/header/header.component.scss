@@ -1,7 +1,6 @@
 /* Import Roboto font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-// Styles for the header component host element
 :host {
   display: block; // Ensure the host takes up block space
   position: relative; // Default position
@@ -35,29 +34,122 @@
   height: 40px; // Ensure height is consistent
 }
 
-.category-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px; // Increase gap slightly
+// Hamburger Menu Button Styles
+.menu-toggle {
+  display: none; // Hidden by default
+  background: none;
+  border: none;
+  font-size: 24px; // Adjust size as needed
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 15px; // Space from logo if needed
+  color: #333; // Button color
 }
 
-.category-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500; // Use the medium weight for nav links
-  padding: 8px 0; // Add some padding for better click area and visual separation
-  border-bottom: 2px solid transparent; // Prepare for active state border
-  transition: color 0.2s ease, border-bottom-color 0.2s ease; // Smooth transition
-
-  &:hover {
-    color: #007bff; // Hover color
+// Default Desktop Navigation Styles
+.category-nav {
+  // On desktop, it's part of the flex layout
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
   }
 
-  // Style for the active link
-  &.active-category {
-    color: #0056b3; // Darker color for active state
-    border-bottom-color: #0056b3; // Add an underline effect
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500; // Use the medium weight for nav links
+    padding: 8px 0; // Add some padding for better click area and visual separation
+    border-bottom: 2px solid transparent; // Prepare for active state border
+    transition: color 0.2s ease, border-bottom-color 0.2s ease; // Smooth transition
+
+    &:hover {
+      color: #007bff; // Hover color
+    }
+
+    // Style for the active link
+    &.active-category {
+      color: #0056b3; // Darker color for active state
+      border-bottom-color: #0056b3; // Add an underline effect
+    }
+  }
+}
+
+// Mobile Menu Overlay (Hidden by default)
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black
+  z-index: 1040; // Below menu, above content
+}
+
+
+// Media Query for Mobile Screens (e.g., under 768px)
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block; // Show hamburger button
+  }
+
+  .category-nav {
+    // Style the container for the mobile menu
+    position: fixed; // Take it out of flow
+    top: 0;
+    right: -280px; // Start off-screen (adjust width as needed)
+    width: 280px; // Width of the side menu
+    height: 100%;
+    background-color: #fff; // Background for the menu
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1050; // Above overlay and fixed header
+    transition: right 0.3s ease-in-out; // Slide animation
+    padding-top: 60px; // Space for header/close button if needed
+    overflow-y: auto; // Allow scrolling if content is long
+
+    // Styles when the mobile menu is open
+    &.mobile-menu-open {
+      right: 0; // Slide in
+
+      .menu-overlay {
+        display: block; // Show overlay when menu is open
+      }
+    }
+
+    // Style the list for vertical layout
+    ul {
+      display: block; // Change from flex to block
+      padding: 20px;
+      gap: 0; // Reset gap
+    }
+
+    li {
+      margin-bottom: 15px; // Space between items
+    }
+
+    // Style links for mobile menu
+    a {
+      display: block; // Make links take full width
+      padding: 10px 15px;
+      border-bottom: none; // Remove desktop underline effect
+      font-weight: 500;
+      color: #333;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #f0f0f0; // Hover background
+        color: #007bff;
+      }
+
+      &.active-category {
+        background-color: #e9ecef; // Active background
+        color: #0056b3;
+        border-bottom-color: transparent; // Ensure no border
+      }
+    }
   }
 }
