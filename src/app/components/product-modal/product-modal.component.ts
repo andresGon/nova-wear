@@ -18,7 +18,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Prevent background scroll when modal is open
-    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+    //this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
 
   ngOnDestroy(): void {
