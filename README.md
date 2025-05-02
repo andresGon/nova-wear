@@ -1,59 +1,97 @@
-# NovaWear
+# Nova Wear - Aplicación Web de Tienda de Ropa
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+Nova Wear es una aplicación web desarrollada con Angular que simula una tienda online. Cuenta con componentes modulares, integración de servicios para consumo de APIs, y un enfoque escalable para proyectos front-end.
 
-## Development server
+se utilizo una api publica llama **Fake Store API** 
+https://fakestoreapi.com/
 
-To start a local development server, run:
+## 🚀 Características principales
+
+se listan todos los productos de la api publica, se visualizan en cards individuales, al hacer click en la card se abre un modal con mas detalles del producto.
+se puede filtrar los productos por categoria desde el componente header.
+---
+
+## 📄 Tecnologías utilizadas
+
+* **Angular 17**
+* **TypeScript**
+* **SCSS**
+* **HttpClientModule** (para peticiones HTTP)
+* **Testing**: Karma + Jasmine + HttpClientTestingModule
+* **Compodoc** (documentación)
+---
+
+## 📁 Estructura del proyecto
 
 ```bash
+src/app/
+├── components/
+│   ├── header/         # Componente de navegación superior
+│   ├── footer/         # Componente de pie de página
+│   ├── home/           # Vista principal o de inicio
+│   ├── product-list/   # Listado de productos
+│   └── product-modal/  # Modal para detalles de producto
+├── models/
+│   └── product.model.ts  # Interfaces y modelos de datos
+├── services/
+│   ├── api.service.ts     # Servicio para consumo de APIs
+│   └── api.service.spec.ts  # Pruebas unitarias del servicio
+├── app.component.*       # Componente principal
+├── app.module.ts         # Módulo principal de la app
+├── app.config.ts         # Configuraciones generales
+└── app.routes.ts         # Rutas de navegación
+```
+
+---
+
+## 📊 Diagrama simple de componentes
+
+```text
+AppComponent
+├── HeaderComponent
+├── RouterOutlet
+│   ├── HomeComponent
+│   │   └── ProductListComponent
+│   │       └── ProductModalComponent
+└── FooterComponent
+```
+
+---
+
+## 🧬 Decisiones técnicas clave
+
+* **Componentes standalone**: Se utilizaron componentes standalone para mejorar la modularidad y evitar sobrecarga en `app.module.ts`.
+* **HttpClientTestingModule**: Usado para pruebas unitarias sin depender de una API real.
+* **Product model**: Centralización de interfaces para consistencia tipada.
+* **Separation of concerns**: Servicios, modelos, y componentes bien delimitados.
+* **Documentacion**: Se utilizó `compodoc` para generar documentación automática.
+---
+
+## ✅ Posibles mejoras futuras
+
+* 📈 **Integración con Backend real**: Actualmente los datos son simulados; se podría conectar con una API real o Firebase.
+* 🚀 **Carrito de compras**: Implementar lógica y visualización del carrito.
+* ⏳ **Estado global**: Usar `NgRx` o `SignalStore` para manejar estado compartido.
+* 📖 **Lazy loading** de módulos para mejorar rendimiento.
+* 🛍️ **Filtros y categorías**: Mejora UX del listado de productos.
+* 🔍 **Buscador** de productos.
+
+---
+
+## ▶️ Ejecución del proyecto
+
+```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abre en navegador: [http://localhost:4200]
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ✏️ Autor
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Desarrollado por **Andres Mauricio Gonzalez** como parte de un una prueba para la vacante de desarrollador front end.
+email: miroenlared@gmail.com
+tel: 301 384 05 56
+---
