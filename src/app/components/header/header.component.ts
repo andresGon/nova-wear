@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
   onWindowScroll(): void {
     // Define a scroll threshold (e.g., 10 pixels)
     const scrollOffset = this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-    const threshold = 10; // Or calculate based on header's initial position/height if needed
+    const threshold = 100; // Or calculate based on header's initial position/height if needed
 
     this.isHeaderFixed = scrollOffset > threshold;
 

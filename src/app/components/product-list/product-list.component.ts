@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
         this.isLoading = true; // Set loading true when params change
         this.error = null;
         this.currentCategory = params.get('categoryName'); // Get category from route params
-        console.log('Current Category from route:', this.currentCategory);
+        //console.log('Current Category from route:', this.currentCategory);
 
         // Decide which API call to make
         if (this.currentCategory) {
@@ -47,7 +47,7 @@ export class ProductListComponent implements OnInit {
       })
     ).subscribe({
       next: (data) => {
-        console.log('API Success - Products received:', data);
+        //console.log('API Success - Products received:', data);
         this.products = data;
         this.isLoading = false;
       },
